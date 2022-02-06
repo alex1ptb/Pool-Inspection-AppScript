@@ -22,26 +22,6 @@ function getBasicInfo() {
   return basicInfo;
 }
 
-//now that we have the basic info, we can work on getting the data from the
-//specific sheet that has a checked box in it.
-//get the checked boxes
-function getCheckedBoxesRowArray() {
-  var basicInfo = getBasicInfo();
-  //go through column of checkboxes and get the row numbers of the checked boxes
-  var checkme = [];
-  for (var i = 0; i < basicInfo.lastRow; i++) {
-    if (
-      basicInfo.activeSheet
-        .getRange(i + 1, basicInfo.checkboxColumnIndex)
-        .isChecked()
-    ) {
-      checkme.push(i + 1);
-    }
-  }
-  console.log(`checkme: ${checkme}`);
-  return checkme;
-}
-
 function getData() {
   //Get values from spreadsheet
   //this needs to be better
