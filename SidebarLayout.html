@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+</head>
+<script>
+ function displayToast() {
+  //  var name = document.getElementById('name').value;
+   google.script.run.displayToast("Running");
+ }
+</script>
+<body>
+  <br>
+  <br>
+  <br>
+  <input type="button" class="button" value="Send Confirmation Email(s)" onclick="google.script.run.jobConfirmationEmail()">
+  <br>
+  <br>
+  <br>
+  <input type="button" class="button" value="Send PDF Email(s)" onclick="google.script.run.sendCustomerPdf()">
+  <br>
+  <br>
+  <br>
+  <input type="button" class="button" value="Clear Checkboxes" onclick="google.script.run.unCheckBoxes()">
+  
+
+</body>
+</html>
