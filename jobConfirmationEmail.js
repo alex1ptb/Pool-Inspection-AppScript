@@ -1,6 +1,6 @@
 //Send out a Inspection confirmation date email to clients confirming the date of inspection
 function jobConfirmationEmail() {
-  // getData() -- getData is being removed as this should run off of the checked values in the spreadsheet and not the entire spreadsheet
+  getData(); // getData is being removed as this should run off of the checked values in the spreadsheet and not the entire spreadsheet
 
   var checkme = getCheckedBoxes();
 

@@ -10,9 +10,11 @@ function getCheckedBoxesRowArray() {
         .getRange(i + 1, basicInfo.checkboxColumnIndex)
         .isChecked() //if checkbox is checked
     ) {
+      //push the row number to the array
       checkme.push(i + 1);
     }
   }
-  console.log(`rows that are checked: ${checkme}`);
+  // log each object in array to console
+  console.log(`checked is ${checkme}`);
   return checkme;
 }
