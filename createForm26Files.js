@@ -1,9 +1,19 @@
 //Copy form 26 template and update with relevant information
 function createForm26File() {
   var basicInfo = getBasicInfo();
-  var checkedValuesRow = getCheckedBoxesRowArray();
-  //check row for value in column "Link to Generated Form 26 for customer"
-  //if value is empty, create file
+  var checkedValuesRow = getCheckedBoxesRowArray(basicInfo);
+  var rowData = [];
+  //check each row and get its data
+  for (let i = 0; i < checkedValuesRow.length; i++) {
+    //get the row number
+    var rowNumber = checkedValuesRow[i];
+    rowData.push(
+      basicInfo.activeSheet
+        .getRange(rowNumber, 1, 1, basicInfo.lastColumn)
+        .getValues()
+    );
+    console.log(`data is ${rowData}`);
+  }
 }
 
 //Script to copy Form 26 and update with relevant information

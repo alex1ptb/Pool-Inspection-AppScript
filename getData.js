@@ -8,6 +8,7 @@ function getBasicInfo() {
   var basicInfo = {};
   basicInfo.activeSheet = activeSheet;
   basicInfo.sheetName = activeSheet.getName();
+  console.log("active sheet is " + basicInfo.sheetName);
   //create ternery operator to check if sheet is "Look Up"
   //if sheet is "Look Up" then header row is 6, else it is 2
   basicInfo.headerRowNumber = basicInfo.sheetName == "Look Up" ? 6 : 2;
