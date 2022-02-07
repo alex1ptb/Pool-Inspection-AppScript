@@ -38,6 +38,8 @@ function createForm26Files() {
           }`,
           destinationFolderForCreatedDocs
         );
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //open doc
         const doc = DocumentApp.openById(copy.getId());
         const body = doc.getBody();

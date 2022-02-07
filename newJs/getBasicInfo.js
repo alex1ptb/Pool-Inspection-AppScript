@@ -1,6 +1,6 @@
 //function get basic information of sheet
 function getBasicInfo() {
-  console.log("getting basic information");
+  //console.log("getting basic information");
   var activeSheet = SpreadsheetApp.getActiveSheet();
   var basicInfo = {}; //get basic info of sheet
   basicInfo.activeSheet = activeSheet;
@@ -14,6 +14,6 @@ function getBasicInfo() {
     .getDisplayValues(); //get column index for column name "Checkbox"
   basicInfo.checkboxColumnIndex =
     basicInfo.headerKeys[0].indexOf("Checkbox") + 1;
-  console.log(`basic info received`);
+  //console.log(`basic info received`);
   return basicInfo;
 }
