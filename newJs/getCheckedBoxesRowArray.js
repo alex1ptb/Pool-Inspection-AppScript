@@ -14,6 +14,6 @@ function getCheckedBoxesRowArray(basicInfo) {
     }
   }
   // log each object in array to console
-  console.log(`total rows: ${checkme}`);
+  console.log(`rows checked: ${checkme}`);
   return checkme;
 }

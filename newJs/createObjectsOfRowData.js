@@ -21,6 +21,5 @@ function createObjectsofRowData(basicInfo) {
     }
     mappedData.push(dataMap);
   }
-  console.log(`Created ${mappedData.length} Objects`);
   return mappedData;
 }

@@ -16,7 +16,7 @@ function createForm26Document(mappedData) {
         `${data["Name"]} - Form 26 - timestamp: ${new Date().toLocaleString()}`,
         destinationFolderForCreatedDocs
       );
-    }
+    } //end else
     let doc = DocumentApp.openById(copy.getId());
     //get the form 26 template and start replacing the values
     let body = doc.getBody();
@@ -44,5 +44,15 @@ function createForm26Document(mappedData) {
 
     //save and close
     doc.saveAndClose();
+
+    //convert file to pdf
+    var docblob = doc.getBlob();
+    docblob.setName(doc.getName() + ".pdf");
+    const pdfDocument = destinationFolderForCreatedPdfs.createFile(docblob);
+    const pdfURL = pdfDocument.getUrl();
+    inputPDFUrlToSheet(data, pdfURL);
+    SpreadsheetApp.getActiveSpreadsheet().toast(
+      "Form 26 created for " + data["Name"]
+    );
   });
 }
