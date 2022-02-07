@@ -41,7 +41,7 @@ function jobConfirmationEmail() {
                 .getRange(2 + i, emailedStatusColumn)
                 .setValue(new Date());
               var Name = arrayOfRows[i]["Name"]; //get name
-              var date = arrayOfRows[i]["Date of Inspection"];
+              var dateOfInspection = arrayOfRows[i]["Date of Inspection"];
               var Email = arrayOfRows[i]["Email"];
               var Street = arrayOfRows[i]["Street"];
               var Suburb = arrayOfRows[i]["Suburb"];
@@ -53,7 +53,7 @@ function jobConfirmationEmail() {
                 "email_Template_JobDateConfirmation.html"
               );
               htmlTemplate.Name = Name;
-              htmlTemplate.date = date;
+              htmlTemplate.date = dateOfInspection;
               htmlTemplate.Email = Email;
               htmlTemplate.Street = Street;
               htmlTemplate.Suburb = Suburb;
