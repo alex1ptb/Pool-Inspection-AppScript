@@ -50,10 +50,10 @@ function jobConfirmationEmail() {
               var Number = arrayOfRows[i]["Phone Number"];
               var subject = "Confirmation of Inspection";
               var htmlTemplate = HtmlService.createTemplateFromFile(
-                "email_Template_JobDateConfirmation.html"
+                "html/email_Template_JobDateConfirmation.html"
               );
               htmlTemplate.Name = Name;
-              htmlTemplate.date = dateOfInspection;
+              htmlTemplate.dateOfInspection = dateOfInspection;
               htmlTemplate.Email = Email;
               htmlTemplate.Street = Street;
               htmlTemplate.Suburb = Suburb;

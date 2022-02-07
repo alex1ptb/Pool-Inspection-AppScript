@@ -1,6 +1,5 @@
 //go through violations and pull relevant text
 function getCodeViolationList(codeViolationsToLookUp) {
-  Logger.log(codeViolationsToLookUp);
   //get data from rows in "Code Violations Sheet"
   const rows = codeViolationSheet.getDataRange().getValues();
   var codeInfo = [];

@@ -1,47 +1,4 @@
 //Copy form 26 template and update with relevant information
-function createObjectsOfRowData(basicInfo) {
-  var mappedData = [];
-  var checkedValuesRowNumbers = getCheckedBoxesRowArray(basicInfo);
-  console.log(`checkedValuesRows: ${checkedValuesRowNumbers}`);
-  var rowData = [];
-  //check each row and get its data
-  for (let i = 0; i < checkedValuesRowNumbers.length; i++) {
-    //get the row number
-    var rowNumber = checkedValuesRowNumbers[i] + basicInfo.headerRowNumber - 1;
-    rowData.push(
-      basicInfo.activeSheet
-        .getRange(rowNumber, 1, 1, basicInfo.lastColumn)
-        .getValues()
-    );
-    //map header to data
-    var header = basicInfo.headerKeys[0];
-    var data = rowData[i];
-    var dataMap = {};
-    for (let j = 0; j < header.length; j++) {
-      dataMap[header[j]] = data[0][j];
-    }
-    mappedData.push(dataMap);
-    console.log(`mappedData: ${JSON.stringify(mappedData)}`);
-  }
-  return mappedData;
-}
-//var basicInfo = getBasicInfo();
-//var mappedData = createObjectsOfRowData(basicInfo);
-
-function createForm26FileToSend(mappedData) {
-  mappedData.forEach((data) => {
-    //if there is data in the column then skip
-    if (data["Link to Generated Form 26 for customer"]) {
-      console.log("link to form 26 exists so skipping");
-      return;
-    }
-    //if there is no data in the column then create a form 26 file
-    else {
-      console.log("creating form 26 file");
-      var form26Template = HtmlService.createTemplateFromFile("form26Template");
-    }
-  });
-}
 
 //Script to copy Form 26 and update with relevant information
 function createForm26Files() {
@@ -81,6 +38,8 @@ function createForm26Files() {
           }`,
           destinationFolderForCreatedDocs
         );
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //open doc
         const doc = DocumentApp.openById(copy.getId());
         const body = doc.getBody();
