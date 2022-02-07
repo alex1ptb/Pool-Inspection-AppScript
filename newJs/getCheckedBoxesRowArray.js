@@ -1,6 +1,5 @@
 //get the checked boxes row numbers and return them as an array
 function getCheckedBoxesRowArray(basicInfo) {
-  console.log(`column of checkbox is ${basicInfo.checkboxColumnIndex}`);
   console.log("Getting checked boxes row numbers");
   //go through column of checkboxes and get the row numbers of the checked boxes
   var checkme = [];
@@ -23,6 +22,6 @@ function getCheckedBoxesRowArray(basicInfo) {
     }
   }
   // log each object in array to console
-  console.log(`checked is ${checkme}`);
+  console.log(`Checked row numbers: ${checkme}`);
   return checkme;
 }

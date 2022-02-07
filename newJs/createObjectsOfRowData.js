@@ -1,7 +1,6 @@
 function createObjectsofRowData(basicInfo) {
   var mappedData = [];
   var checkedValuesRowNumbers = getCheckedBoxesRowArray(basicInfo);
-  console.log(`checkedValuesRows: ${checkedValuesRowNumbers}`);
   var rowData = [];
   //check each row and get its data
   for (let i = 0; i < checkedValuesRowNumbers.length; i++) {
@@ -20,7 +19,6 @@ function createObjectsofRowData(basicInfo) {
       dataMap[header[j]] = data[0][j];
     }
     mappedData.push(dataMap);
-    console.log(`mappedData: ${JSON.stringify(mappedData)}`);
   }
   return mappedData;
 }
