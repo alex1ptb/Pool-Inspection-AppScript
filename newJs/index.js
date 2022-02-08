@@ -13,4 +13,6 @@ function newMain() {
   //input the form 26 url to the sheet
   inputPDFUrlToSheet(form26, basicInfo);
   //console.log(form26);
+
+  //let sendForm26 = sendForm26(form26, basicInfo);
 }

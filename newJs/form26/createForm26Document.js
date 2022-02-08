@@ -3,6 +3,9 @@ function createForm26Document(mappedData) {
     //if there is data in the column then skip
     if (data["Link to Generated Form 26 for customer"]) {
       console.log(`${data["Name"]} already has a form 26`);
+      let pdfURL = data["Link to Generated Form 26 for customer"];
+      sendForm26(data, pdfURL);
+      updateSheetWithTimeStampforForm26(data);
       return;
     }
     //if there is no data in the column then create a form 26 file
@@ -50,9 +53,15 @@ function createForm26Document(mappedData) {
     docblob.setName(doc.getName() + ".pdf");
     const pdfDocument = destinationFolderForCreatedPdfs.createFile(docblob);
     const pdfURL = pdfDocument.getUrl();
+    //add the pdf url to the sheet
     inputPDFUrlToSheet(data, pdfURL);
+    //let the user know that the form 26 has been created
     SpreadsheetApp.getActiveSpreadsheet().toast(
       "Form 26 created for " + data["Name"]
     );
+    //send the form 26 to the customer
+    sendForm26(data, pdfURL);
+    //update the sheet with time stamp of when the form 26 was sent
+    updateSheetWithTimeStampforForm26(data);
   });
 }
