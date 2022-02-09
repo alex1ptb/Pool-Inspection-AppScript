@@ -1,4 +1,5 @@
 function updateSheetWithTimeStampforForm26(data) {
+  console.log("I RAN AND IM SUPPOSED TO BE DELETED");
   //update "Form Response 1" sheet in the column "Date Form 26 emailed to customer" with the time stamp of when the form 26 was sent
   let sheet =
     SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Form Response 1");

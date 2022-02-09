@@ -9,12 +9,12 @@ function sendForm26(data, pdfURL) {
   form26ID = DriveApp.getFileById(form26ID);
   let subject = "Form 26 for " + name;
   let body = `Please find attached the form 26 for ${name}.
-        \n\n
-        Here is the video link for the inspection: ${data["Inspection Video Link"]}
+        \n\nHere is the video link for the inspection: ${data["Inspection Video Link"]}
         `;
   GmailApp.createDraft(email, subject, body, {
     attachments: [form26ID],
     name: "Form 26 PDF",
   });
   console.log("sent form 26");
+  SpreadsheetApp.getActiveSpreadsheet().toast("Form 26 sent to " + name);
 }

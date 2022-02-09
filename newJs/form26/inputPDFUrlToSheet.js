@@ -24,6 +24,12 @@ function inputPDFUrlToSheet(data, pdfURL) {
             headerKeys[0].indexOf("Link to Generated Form 26 for customer") + 1
           )
           .setValue(pdfURL);
+        sheet
+          .getRange(
+            index,
+            headerKeys[0].indexOf("Date Form 26 emailed to customer") + 1
+          )
+          .setValue(new Date().toLocaleString());
         break;
       }
       index--;
@@ -48,6 +54,12 @@ function inputPDFUrlToSheet(data, pdfURL) {
             headerKeys[0].indexOf("Link to Generated Form 26 for customer") + 1
           )
           .setValue(pdfURL);
+        sheet
+          .getRange(
+            index,
+            headerKeys[0].indexOf("Date Form 26 emailed to customer") + 1
+          )
+          .setValue(new Date().toLocaleString());
         break;
       }
       index--;
