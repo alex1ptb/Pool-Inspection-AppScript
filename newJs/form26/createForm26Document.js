@@ -4,7 +4,10 @@ function createForm26Document(mappedData) {
     if (data["Link to Generated Form 26 for customer"]) {
       console.log(`${data["Name"]} already has a form 26`);
       let pdfURL = data["Link to Generated Form 26 for customer"];
-      sendForm26(data, pdfURL);
+      if (data["Date Form 26 emailed to customer"] == "") {
+        sendForm26(data, pdfURL);
+        updateSheetWithTimeStampforForm26(data);
+      }
       return;
     }
     //if there is no data in the column then create a form 26 file
@@ -60,6 +63,7 @@ function createForm26Document(mappedData) {
     );
     //send the form 26 to the customer
     sendForm26(data, pdfURL);
+    updateSheetWithTimeStampforForm26(data);
     //update the sheet with time stamp of when the form 26 was sent
   });
 }

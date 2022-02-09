@@ -1,4 +1,4 @@
-function updateSheetWithTimeStampforForm26(data) {
+function updateSheetWithTimeStampforConfirmationEmail(data) {
   var sheet =
     SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Form Responses 1");
   if (data["Unique ID"]) {
@@ -11,7 +11,7 @@ function updateSheetWithTimeStampforForm26(data) {
         sheet
           .getRange(
             index,
-            headerKeys[0].indexOf("Date Form 26 emailed to customer") + 1
+            headerKeys[0].indexOf("Confirmation Email Timestamp") + 1
           )
           .setValue(new Date().toLocaleString());
         break;
@@ -35,7 +35,7 @@ function updateSheetWithTimeStampforForm26(data) {
         sheet
           .getRange(
             index,
-            headerKeys[0].indexOf("Date Form 26 emailed to customer") + 1
+            headerKeys[0].indexOf("Confirmation Email Timestamp") + 1
           )
           .setValue(new Date().toLocaleString());
         break;
