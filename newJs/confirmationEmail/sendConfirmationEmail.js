@@ -23,6 +23,7 @@ function sendConfirmationEmail(mappedData) {
       updateSheetWithTimeStampforConfirmationEmail(data);
     }
   });
+  SpreadsheetApp.getActive().toast("Email Sent");
   return;
 
   //   formResponse

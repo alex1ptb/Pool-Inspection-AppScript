@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <base target="_top">
-</head>
-<script>
- function displayToast() {
-  //  var name = document.getElementById('name').value;
-   google.script.run.displayToast("Running");
- }
-</script>
-<body>
-  <br>
-  <br>
-  <br>
-  <input type="button" class="button" value="Send Confirmation Email(s)" onclick="google.script.run.jobConfirmationEmail()">
-  <br>
-  <br>
-  <br>
-  <input type="button" class="button" value="Send PDF Email(s)" onclick="google.script.run.sendCustomerPdf()">
-  <br>
-  <br>
-  <br>
-  <input type="button" class="button" value="Clear Checkboxes" onclick="google.script.run.unCheckBoxes()">
-  
-
-</body>
+  <head>
+    <base target="_top" />
+  </head>
+  <script>
+    function displayToast() {
+      //  var name = document.getElementById('name').value;
+      google.script.run.displayToast("Running");
+    }
+  </script>
+  <body>
+    <br />
+    <br />
+    <br />
+    <input
+      type="button"
+      class="button"
+      id="job-confirmation-email"
+      value="Send Confirmation Email(s)"
+      onclick="google.script.run.newMain(this.id)"
+    />
+    <br />
+    <br />
+    <br />
+    <input
+      type="button"
+      class="button"
+      value="Send PDF Email(s)"
+      id="send-pdf-email"
+      onclick="google.script.run.newMain(this.id)"
+    />
+    <br />
+    <br />
+    <br />
+    <input
+      type="button"
+      class="button"
+      value="Clear Checkboxes"
+      id="clear-checkboxes"
+      onclick="google.script.run.newMain(this.id)"
+    />
+  </body>
 </html>
