@@ -1,4 +1,5 @@
 //VARIABLES
+// After re-writing the code, I am unsure of which variables are actually being used. Will need to clean up and check for unused variables.
 const form26TemplateID = "1li7y5Kn-k_ij_reYharZCdFa9uHu0V7F0q0p6WMfsUU";
 const codeViolationSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(
   "Code Violation Data"

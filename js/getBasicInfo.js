@@ -5,6 +5,7 @@ function getBasicInfo() {
   basicInfo.activeSheet = activeSheet;
   basicInfo.sheetName = activeSheet.getName();
   basicInfo.headerRowNumber = basicInfo.sheetName == "Look Up" ? 6 : 2; //if sheet is "Look Up" then header row is 6, else it is 2
+  insertCheckBoxesOntoSheet(basicInfo);
   basicInfo.lastRow = activeSheet.getLastRow() - basicInfo.headerRowNumber;
   basicInfo.lastColumn = activeSheet.getLastColumn();
   //get header keys
