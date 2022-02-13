@@ -2,6 +2,9 @@
 
 App script made for client to help with their business
 
+<!-- line break -->
+
+\n
 checklist of how the functions go
 
 run onOpen() -- create user sidebar interface
