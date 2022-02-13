@@ -3,6 +3,7 @@ function onOpen() {
     .createMenu("Email")
     .addItem("Email Options", "showAdminSidebar")
     .addToUi();
+  getBasicInfo();
   insertCheckBoxesOntoSheet(basicInfo);
 }
 
