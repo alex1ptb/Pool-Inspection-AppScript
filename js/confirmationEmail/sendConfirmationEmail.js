@@ -7,9 +7,12 @@ function sendConfirmationEmail(mappedData) {
       );
       var subject = "Confirmation of Inspection";
       htmlTemplate.Name = data["Name"];
-      htmlTemplate.dateOfInspection = new Date(
-        parseInt(data["Date of Inspection"], 10)
-      );
+      htmlTemplate.dateOfInspection =
+        data["Date of Inspection"].getDate() +
+        "/" +
+        (data["Date of Inspection"].getMonth() + 1) +
+        "/" +
+        data["Date of Inspection"].getFullYear();
       htmlTemplate.Email = data["Email"];
       htmlTemplate.Street = data["Street"];
       htmlTemplate.Suburb = data["Suburb"];
