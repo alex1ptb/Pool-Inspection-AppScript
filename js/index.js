@@ -29,6 +29,7 @@ function newMain(event) {
   //array of objects populated from rows in the sheet that have been checked inside of the checkbox column
   // console.log("creating objects of row data");
   let mappedData = createObjectsofRowData(basicInfo);
+  // insertCheckBoxesOntoSheet(basicInfo)
   SpreadsheetApp.getActiveSpreadsheet().toast(id);
   if (id === "job-confirmation-email") {
     console.log("sending email");
@@ -44,6 +45,8 @@ function newMain(event) {
     );
     return;
   } else if (id === "clear-checkboxes") {
+    basicInfo
+    // insertCheckBoxesOntoSheet(basicInfo)
     unCheckBoxes(basicInfo);
     return;
   }
