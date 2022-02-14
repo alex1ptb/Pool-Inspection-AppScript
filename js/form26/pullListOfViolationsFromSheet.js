@@ -1,13 +1,11 @@
 //go through violations and pull relevant text
 function getCodeViolationList(codeViolationsToLookUp) {
+  const codeViolationSheet =
+    SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Code Violation Data");
   //get data from rows in "Code Violations Sheet"
   const rows = codeViolationSheet.getDataRange().getValues();
   var codeInfo = [];
   rows.forEach((value) => {
-    //if null return
-    if (codeViolationsToLookUp == "") {
-      return;
-    }
     //Logger.log(`value: ${value[2]}`)
     if (codeViolationsToLookUp.length == null) {
       //if just 1 value, look it up and push it in
@@ -18,19 +16,20 @@ function getCodeViolationList(codeViolationsToLookUp) {
       //if no values then just return
       return;
     }
+    //if null return
+    if (codeViolationsToLookUp == "") {
+      return;
+    }
     //otherwise go through each and push the data up
     else {
       codeViolationsToLookUp.forEach((code) => {
         //if code is found. push data up
-        if (value[2] == code && value[1] != "") {
-          codeInfo.push(`${value[1]} \n
-          --------------------------------------------------------------------
-          \n`);
+        if (value[2] == code) {
+          codeInfo.push(`${value[1]} \n \n`);
         }
       });
     }
   });
-  console.log(codeInfo);
   return codeInfo;
 }
 //

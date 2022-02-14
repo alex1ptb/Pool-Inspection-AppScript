@@ -1,5 +1,9 @@
 //take the url of the pdf and put it in the sheet named "Form Response 1" in the correct column and row
 function inputPDFUrlToSheet(data, pdfURL) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet(); //Current SpreadSheet
+  const formResponse = ss.getSheetByName("Form Responses 1");
+  const lastColumn = formResponse.getLastColumn();
+  const headerKeys = formResponse.getRange(1, 1, 1, lastColumn).getValues();
   var data = data;
   if (data == null || data == "" || data == undefined) {
     console.log("data is null");
