@@ -44,7 +44,7 @@ function createForm26Document(
     body.replaceText("{{codeviolations}}", codeViolationList(data));
     body.replaceText(
       "{{inspectiondate}}",
-      new Date(data["Date of Inspection"]).toLocaleDateString("pt-PT")
+      new Date(data["Date of Inspection"]).toLocaleDateString()
     );
     body.replaceText("{{date}}", new Date().toLocaleDateString("pt-PT"));
     if (data["Type of Fence"].valueOf() == "NOT Shared") {
