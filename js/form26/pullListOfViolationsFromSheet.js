@@ -11,7 +11,7 @@ function getCodeViolationList(codeViolationsToLookUp) {
       //if just 1 value, look it up and push it in
       if (value[2] == codeViolationsToLookUp.valueOf()) {
         codeInfo.push(
-          `${value[1]} \n -------------------------------------------------------------------- \n`
+          `${value[1]} \n -------------------------------------------------------------------- \n -------------------------------------------------------------------- \n`
         );
         return;
       }
@@ -28,7 +28,8 @@ function getCodeViolationList(codeViolationsToLookUp) {
         //if code is found. push data up
         if (value[2] == code) {
           codeInfo.push(
-            `${value[1]} \n -------------------------------------------------------------------- \n`
+            `${value[1]} \n -------------------------------------------------------------------- \n
+            --------------------------------------------------------------------\n`
           );
         }
       });
