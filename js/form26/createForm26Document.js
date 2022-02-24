@@ -26,7 +26,7 @@ function createForm26Document(
       const form26Template = DriveApp.getFileById(form26TemplateID);
 
       var copy = form26Template.makeCopy(
-        `${data["Name"]} - Form 26 - timestamp: ${new Date().toLocaleString()}`,
+        `${data["Street"]} - Form 26 Non-conformity Notice`,
         destinationFolderForCreatedDocs
       );
     } //end else
