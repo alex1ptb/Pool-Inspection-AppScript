@@ -6,47 +6,31 @@ function sendForm26(data, pdfURL) {
   console.log(pdfURL);
   let form26ID = pdfURL.match(/[-\w]{25,}(?!.*[-\w]{25,})/);
   console.log(form26ID);
+  console.log(form26ID);
   form26ID = DriveApp.getFileById(form26ID);
   let subject = `${data["Street"]} - Form 26 Non-Conformity Notice - ${data[
     "Date of Inspection"
   ].toLocaleDateString()}`;
-  let body = `${name}, \n
-    Please find attached details of your pool fence/barrier inspection: \n \n
-    Address: ${data["Street"]} ${data["Suburb"]} ${data["Local Government Area"]} ${data["Postcode"]} \n
-    Attached: QBCC Form 26 \n
-    See videos for more details. \n
-    videos: ${data["Inspection Video Link"]} \n\n
-    Your pool barrier was inspected as requested and a Form 26 has
-been issued (see attached Form 26 and detail).\n
-For any pool barrier remedial/building work it is recommended that you engage a QBCC licensed tradesperson/builder who understands the required pool fence & safety regulations and who will guarantee that their work will pass inspection.\n
-\n
-For any clarification regarding pool safety building/compliance/regulations you may wish to refer to the Building Act 1975, Australian Standards 1926 \n
-Part 1 and Part 2 and QDC MP 3.4, local council requirements and QBCC guidelines:\n
-<a href="https://www.legislation.qld.gov.au/view/html/inforce/current/act-1975-011">https://www.legislation.qld.gov.au/view/html/inforce/current/act-1975-011</a> \n
-https://www.hpw.qld.gov.au/__data/assets/pdf_file/0015/4812/qdcmp3.4swimmingpoolbarriers.pdf \n
-https://www.standards.org.au/standards-catalogue/sa-snz/building/cs-034/as--1926-dot-1-2012 \n
-https://www.qbcc.qld.gov.au/home-building-owners/pool-safety/overview \n
-Once the changes have been made please contact our office via email to arrange a new inspection:\n`;
-
-  let message = {
-    to: email,
-    subject: subject,
-    htmlBody: body,
-    attachments: [
-      {
-        fileName: `${data["Street"]} - Form 26 Non-conformity Notice.pdf ${data[
-          "Date of Inspection"
-        ].toLocaleDateString()}`,
-        mimeType: "application/pdf",
-        attachment: form26ID,
-      },
-    ],
+  var htmlTemplate = HtmlService.createTemplateFromFile(
+    "html/email_Template_Form26.html"
+  );
+  htmlTemplate.name = data["Name"];
+  htmlTemplate.street = data["Street"];
+  htmlTemplate.suburb = data["Suburb"];
+  htmlTemplate.postcode = data["Postcode"];
+  htmlTemplate.governmentArea = data["Local Government Area"];
+  htmlTemplate.link = data["Inspection Video Link"];
+  htmlBody = htmlTemplate.evaluate().getContent();
+  options = {};
+  options.htmlBody = htmlBody;
+  options.attachment = {
+    fileName: `${data["Street"]} - Form 26 Non-conformity Notice.pdf ${data[
+      "Date of Inspection"
+    ].toLocaleDateString()}`,
+    mimeType: "application/pdf",
+    attachment: form26ID,
   };
-
-  GmailApp.createDraft(email, subject, body, {
-    attachments: [form26ID],
-    name: "Form 26 PDF",
-  });
+  GmailApp.createDraft(email, subject, "", options);
   console.log("sent form 26");
   SpreadsheetApp.getActiveSpreadsheet().toast("Form 26 sent to " + name);
 }
