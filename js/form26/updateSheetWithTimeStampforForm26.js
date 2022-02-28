@@ -1,4 +1,8 @@
 function updateSheetWithTimeStampforForm26(data) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet(); //Current SpreadSheet
+  const formResponse = ss.getSheetByName("Form Responses 1");
+  const lastColumn = formResponse.getLastColumn();
+  const headerKeys = formResponse.getRange(1, 1, 1, lastColumn).getValues();
   var sheet =
     SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Form Responses 1"); //targeting shet to update
   if (data["Unique ID"]) {

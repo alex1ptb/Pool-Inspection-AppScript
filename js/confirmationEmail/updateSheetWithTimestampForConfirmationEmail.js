@@ -1,6 +1,7 @@
 function updateSheetWithTimeStampforConfirmationEmail(data) {
   var sheet =
     SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Form Responses 1");
+  var headerKeys = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues();
   if (data["Unique ID"]) {
     var index = sheet.getLastRow();
     while (index > 0) {

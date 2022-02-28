@@ -1,20 +1,15 @@
 function insertCheckBoxesOntoSheet(basicInfo) {
-  if (basicInfo.sheetName == "Look up" || "Todays Job") {
-    var getDataRowCount = basicInfo.activeSheet.getRange(
-      basicInfo.headerRowNumber + 1,
-      2,
-      basicInfo.activeSheet.getLastRow(),
-      2
-    );
-    var boxAmount = getDataRowCount.getValues().length;
-    basicInfo.activeSheet
-      .getRange(
-        basicInfo.headerRowNumber + 1,
-        1,
-        boxAmount - basicInfo.headerRowNumber
-      )
+    // SpreadsheetApp.getActive().toast("Inserting Checkboxes");
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+  let target = ss.getSheetByName("Look Up");
+  // if (activeSheet.sheetName == "Look Up") {
+    target
+      .getRange(7, 1, target.getLastRow()-6)
       .insertCheckboxes();
-  } else {
-    return;
-  }
+  //  if (basicInfo.sheetName == "Todays Job") {
+  //   basicInfo.activeSheet
+  //     .getRange(3, 1, basicInfo.activeSheet.getLastRow())
+  //     .insertCheckboxes();
+  // }
+ return
 }

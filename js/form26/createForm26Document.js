@@ -1,4 +1,10 @@
-function createForm26Document(mappedData) {
+function createForm26Document(
+  mappedData,
+  form26TemplateID,
+  destinationFolderForCreatedDocs,
+  destinationFolderForCreatedPdfs,
+  form26ID
+) {
   mappedData.forEach((data) => {
     //if there is data in the column then skip
     if (data["Link to Generated Form 26 for customer"]) {
@@ -17,8 +23,10 @@ function createForm26Document(mappedData) {
         `Creating Form 26 for ${data["Name"]} \n Please wait...`
       );
       //save a copy to drive
+      const form26Template = DriveApp.getFileById(form26TemplateID);
+
       var copy = form26Template.makeCopy(
-        `${data["Name"]} - Form 26 - timestamp: ${new Date().toLocaleString()}`,
+        `${data["Street"]} - Form 26 Non-conformity Notice`,
         destinationFolderForCreatedDocs
       );
     } //end else
@@ -36,7 +44,7 @@ function createForm26Document(mappedData) {
     body.replaceText("{{codeviolations}}", codeViolationList(data));
     body.replaceText(
       "{{inspectiondate}}",
-      new Date(data["Date of Inspection"]).toLocaleDateString("pt-PT")
+      new Date(data["Date of Inspection"]).toLocaleDateString()
     );
     body.replaceText("{{date}}", new Date().toLocaleDateString("pt-PT"));
     if (data["Type of Fence"].valueOf() == "NOT Shared") {
@@ -62,7 +70,7 @@ function createForm26Document(mappedData) {
       "Form 26 created for " + data["Name"]
     );
     //send the form 26 to the customer
-    sendForm26(data, pdfURL);
+    sendForm26(data, pdfURL, form26ID);
     updateSheetWithTimeStampforForm26(data);
     //update the sheet with time stamp of when the form 26 was sent
   });
