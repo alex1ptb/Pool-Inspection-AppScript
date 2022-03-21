@@ -1,13 +1,4 @@
 function sendForm26(data, pdfURL) {
-  // if (data == undefined){
-  //   console.log(`data: undefined. Getting data`)
-  //   data = createObjectsofRowData();
-
-  // }
-  //       if (pdfURL == undefined){
-  //   pdfURL = data["Link to Generated Form 26 for customer"]
-  //       }
-
   console.log(`data: ${JSON.stringify(data)}`);
   console.log(`pdfURL: ${pdfURL}`);
   //send the form 26 to the customer
@@ -17,7 +8,7 @@ function sendForm26(data, pdfURL) {
   let name = data["Name"];
   console.log(`name: ${name}`);
   let form26ID = pdfURL.match(/[-\w]{25,}(?!.*[-\w]{25,})/);
-  console.log(`original form26ID: ${form26ID}`)
+  console.log(`original form26ID: ${form26ID}`);
   form26ID = DriveApp.getFileById(form26ID).getAs("application/pdf");
   console.log(`form26ID: ${form26ID}`);
 
@@ -49,20 +40,12 @@ function sendForm26(data, pdfURL) {
 
   //console.log(options)
 
-
-
-  GmailApp.createDraft(
-    email, 
-    subject, 
-    "", 
-     {
-       htmlBody: options.htmlBody,
-        attachments: 
-            [form26ID],
-            name: options.attachment.fileName,
-            mimeType: options.attachment.mimeType
-        
-     });
+  GmailApp.createDraft(email, subject, "", {
+    htmlBody: options.htmlBody,
+    attachments: [form26ID],
+    name: options.attachment.fileName,
+    mimeType: options.attachment.mimeType,
+  });
   console.log("sent form 26");
   SpreadsheetApp.getActiveSpreadsheet().toast("Form 26 sent to " + name);
 }

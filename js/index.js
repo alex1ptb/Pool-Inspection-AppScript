@@ -32,16 +32,6 @@ function newMain(event) {
   // insertCheckBoxesOntoSheet(basicInfo)
   SpreadsheetApp.getActiveSpreadsheet().toast(id);
 
-    console.log("sending pdf");
-createForm26Document(
-  mappedData,
-  form26TemplateID,
-  destinationFolderForCreatedDocs,
-  destinationFolderForCreatedPdfs
-)
-    return;
-
-  
   if (id === "job-confirmation-email") {
     console.log("sending email");
     sendConfirmationEmail(mappedData);
@@ -54,10 +44,9 @@ createForm26Document(
       destinationFolderForCreatedDocs,
       destinationFolderForCreatedPdfs
     );
-    sendForm26()
     return;
   } else if (id === "clear-checkboxes") {
-    basicInfo
+    basicInfo;
     // insertCheckBoxesOntoSheet(basicInfo)
     unCheckBoxes(basicInfo);
     return;
