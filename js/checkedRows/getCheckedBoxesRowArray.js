@@ -1,6 +1,8 @@
 //get the checked boxes row numbers and return them as an array
 function getCheckedBoxesRowArray(basicInfo) {
-  //console.log("Getting checked rows numbers");
+  if (basicInfo == undefined){
+    basicInfo = getBasicInfo()
+  }
   //go through column of checkboxes and get the row numbers of the checked boxes
   var checkme = [];
   for (var i = 0; i <= basicInfo.lastRow; i++) {

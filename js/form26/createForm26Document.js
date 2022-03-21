@@ -5,12 +5,16 @@ function createForm26Document(
   destinationFolderForCreatedPdfs,
   form26ID
 ) {
+  if (mappedData == undefined){
+    mappedData = createObjectsofRowData(getBasicInfo)
+  }
   mappedData.forEach((data) => {
     //if there is data in the column then skip
     if (data["Link to Generated Form 26 for customer"]) {
       console.log(`${data["Name"]} already has a form 26`);
       let pdfURL = data["Link to Generated Form 26 for customer"];
       if (data["Date Form 26 emailed to customer"] == "") {
+        console.log(`skipped making pdf and straight to sending`)
         sendForm26(data, pdfURL);
         updateSheetWithTimeStampforForm26(data);
       }

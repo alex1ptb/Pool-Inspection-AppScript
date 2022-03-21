@@ -1,16 +1,31 @@
 function sendForm26(data, pdfURL) {
+  // if (data == undefined){
+  //   console.log(`data: undefined. Getting data`)
+  //   data = createObjectsofRowData();
+
+  // }
+  //       if (pdfURL == undefined){
+  //   pdfURL = data["Link to Generated Form 26 for customer"]
+  //       }
+
+  console.log(`data: ${JSON.stringify(data)}`);
+  console.log(`pdfURL: ${pdfURL}`);
   //send the form 26 to the customer
   console.log("sending form 26");
+
   let email = data["Email"];
   let name = data["Name"];
-  console.log(pdfURL);
+  console.log(`name: ${name}`);
   let form26ID = pdfURL.match(/[-\w]{25,}(?!.*[-\w]{25,})/);
-  console.log(form26ID);
-  console.log(form26ID);
-  form26ID = DriveApp.getFileById(form26ID);
+  console.log(`original form26ID: ${form26ID}`)
+  form26ID = DriveApp.getFileById(form26ID).getAs("application/pdf");
+  console.log(`form26ID: ${form26ID}`);
+
+  //////FIX THE DATE
   let subject = `${data["Street"]} - Form 26 Non-Conformity Notice - ${data[
     "Date of Inspection"
   ].toLocaleDateString()}`;
+
   var htmlTemplate = HtmlService.createTemplateFromFile(
     "html/email_Template_Form26.html"
   );
@@ -30,7 +45,24 @@ function sendForm26(data, pdfURL) {
     mimeType: "application/pdf",
     attachment: form26ID,
   };
-  GmailApp.createDraft(email, subject, "", options);
+  console.log(`attachment info: ${JSON.stringify(options.attachment)}`);
+
+  //console.log(options)
+
+
+
+  GmailApp.createDraft(
+    email, 
+    subject, 
+    "", 
+     {
+       htmlBody: options.htmlBody,
+        attachments: 
+            [form26ID],
+            name: options.attachment.fileName,
+            mimeType: options.attachment.mimeType
+        
+     });
   console.log("sent form 26");
   SpreadsheetApp.getActiveSpreadsheet().toast("Form 26 sent to " + name);
 }
