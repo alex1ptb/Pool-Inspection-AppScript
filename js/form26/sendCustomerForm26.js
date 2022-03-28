@@ -1,4 +1,5 @@
 function sendForm26(data, pdfURL) {
+  console.log(`function logs sendForm26`);
   console.log(`data: ${JSON.stringify(data)}`);
   console.log(`pdfURL: ${pdfURL}`);
   //send the form 26 to the customer
@@ -25,8 +26,16 @@ function sendForm26(data, pdfURL) {
   htmlTemplate.suburb = data["Suburb"];
   htmlTemplate.postcode = data["Postcode"];
   htmlTemplate.governmentArea = data["Local Government Area"];
-  htmlTemplate.link = data["Inspection Video Link"];
+
+  var videos = makeListOfVideos(data);
+  htmlTemplate.link = videos;
+  //I think I have the correct code. I just need to figure out how to put the html in the email.
+
+  // htmlTemplate.link = data["Inspection Video Link"];
   htmlBody = htmlTemplate.evaluate().getContent();
+  //update the html with the video links
+  // htmlBody = htmlBody.replace("<?= link ?>", `${videos}`);
+
   options = {};
   options.htmlBody = htmlBody;
   options.attachment = {
