@@ -12,10 +12,15 @@
       <?= postcode ?>
     </div>
     <p>Attached: QBCC Form 26</p>
-    <p>
-      See videos for more details:
-      <a href="<?= link ?>">Link to video</a>
-    </p>
+    <div class="linkSection">
+      See videos for more details:<br />
+      <?= link ?>
+      <?= 'Video Links:' ?>
+      <? var data = [...link];
+        for (var i = 0; i < data.length; i++) { ?>
+      <b><?= data[i] ?></b>
+      <? } ?>
+    </div>
     <p>
       Your pool barrier was inspected as requested and a Form 26 has been issued
       (see attached Form 26 and detail).
