@@ -13,12 +13,16 @@
     </div>
     <p>Attached: QBCC Form 26</p>
     <div class="linkSection">
-      See videos for more details:<br />
-      <?= link ?>
+      <!-- See videos for more details:<br />
+      <?= link ?> -->
       <?= 'Video Links:' ?>
       <? var data = [...link];
         for (var i = 0; i < data.length; i++) { ?>
-      <b><?= data[i] ?></b>
+      <div class="link">
+        <!-- need to add href -->
+        <a href="<?= data[i] ?>"><?= data[i] ?></a>
+      </div>
+      <br />
       <? } ?>
     </div>
     <p>
